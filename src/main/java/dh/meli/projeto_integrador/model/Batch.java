@@ -81,8 +81,4 @@ public class Batch {
     @JsonIgnoreProperties("batches")
     private OrderEntry orderEntry;
 
-    @Column(name = "locate")
-    private String locate;
-
-
 }
