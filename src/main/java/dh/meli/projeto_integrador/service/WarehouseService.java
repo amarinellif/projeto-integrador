@@ -2,11 +2,15 @@ package dh.meli.projeto_integrador.service;
 
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningDueDateDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningTempDto;
+import dh.meli.projeto_integrador.dto.dtoOutput.WrongPlaceBatchDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongTempDto;
 import dh.meli.projeto_integrador.exception.ResourceNotFoundException;
 import dh.meli.projeto_integrador.model.Batch;
+import dh.meli.projeto_integrador.model.IWrongPlaceBatch;
+import dh.meli.projeto_integrador.model.Section;
 import dh.meli.projeto_integrador.model.Warehouse;
 import dh.meli.projeto_integrador.repository.IBatchRepository;
+import dh.meli.projeto_integrador.repository.ISectionRepository;
 import dh.meli.projeto_integrador.repository.IWarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +35,9 @@ public class WarehouseService implements IWarehouseService {
 
     @Autowired
     private IBatchRepository batchRepository;
+
+    @Autowired
+    private ISectionRepository sectionRepository;
 
     /**
      * Method to find a warehouse by id;
@@ -73,25 +80,36 @@ public class WarehouseService implements IWarehouseService {
      * @return an object of type WarningTempDto;
      */
     @Override
-    public WarningDueDateDto getWarningDueDateBatchesByWarehouse(int daysUntil,long id) {
+    public WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id,int daysUntil) {
         Warehouse warehouse = findWarehouse(id);
-        List<Batch> batchList = batchRepository.getWarningDueDateByWarehouseId(daysUntil,id);
+        List<Batch> batchList = batchRepository.getWarningDueDateByWarehouseId(daysUntil, id);
 
         if (batchList.isEmpty()) {
             throw new ResourceNotFoundException("Everything is okay with this Warehouse. No batch warnings found.");
         }
-        return new WarningDueDateDto(warehouse,batchList);
+        return new WarningDueDateDto(warehouse, batchList);
     }
 
     @Override
-    public WrongTempDto getWrongTempSection(Long id){
-        //TODO DESVINCULAR A QUERY DO BATCH, atrelar a sessão :)
+    public WrongTempDto getWrongTempSection(Long id) {
         Warehouse warehouse = findWarehouse(id);
-        List<Batch> batchList = batchRepository.getWrongTempSection(id);
+        List<Section> sectionList = sectionRepository.getWrongTempSection(id);
+
+        if (sectionList.isEmpty()) {
+            throw new ResourceNotFoundException("Everything is okay with this Warehouse. No section warnings found.");
+        }
+        return new WrongTempDto(warehouse, sectionList);
+    }
+
+    @Override
+    public WrongPlaceBatchDto getWrongPlaceBatches(long id) {
+        Warehouse warehouse = findWarehouse(id);
+        List<IWrongPlaceBatch> batchList = batchRepository.getWrongPlaceBatches(id);
 
         if (batchList.isEmpty()) {
             throw new ResourceNotFoundException("Everything is okay with this Warehouse. No batch warnings found.");
         }
-        return new WrongTempDto(warehouse, batchList);
+
+        return new WrongPlaceBatchDto(warehouse, batchList);
     }
 }

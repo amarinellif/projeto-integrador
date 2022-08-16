@@ -2,7 +2,9 @@ package dh.meli.projeto_integrador.service;
 
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningDueDateDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningTempDto;
+import dh.meli.projeto_integrador.dto.dtoOutput.WrongPlaceBatchDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongTempDto;
+import dh.meli.projeto_integrador.model.IWrongPlaceBatch;
 import dh.meli.projeto_integrador.model.Warehouse;
 
 /**
@@ -34,13 +36,20 @@ public interface IWarehouseService {
      * @param id long
      * @return an object of type WarningDueDateDto
      */
-    WarningDueDateDto getWarningDueDateBatchesByWarehouse(int daysUntil, long id);
+    WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id,int daysUntil);
     /**
      * Method for to possibles Warnings about incorrects temperatures by Warehouse Id
      *
-     * @param id long
+     * @param warehouseId long
      * @return an object of type WrongTempDto
      */
     WrongTempDto getWrongTempSection(Long warehouseId);
 
+    /**
+     * Method for to possibles Warnings about incorrects alocates by Warehouse Id
+     *
+     * @param id long
+     * @return an object of type WrongTempDto
+     */
+    WrongPlaceBatchDto getWrongPlaceBatches (long id);
 }
