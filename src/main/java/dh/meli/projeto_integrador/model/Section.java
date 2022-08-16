@@ -65,4 +65,15 @@ public class Section {
     @Column(name = "current_product_load")
     private long currentProductLoad;
 
+    @Column(name = "minimum_temperature")
+    private float minimumTemperature;
+
+    @Column(name = "maximum_temperature")
+    private float maxTemperature;
+
+    @Column(name = "current_temperature")
+    private float currentTemperature;
+
+
+
 }
