@@ -47,6 +47,7 @@ public class Batch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "batch_id")
     private long id;
 
     @Column(name = "current_temperature")
@@ -79,5 +80,9 @@ public class Batch {
     @JoinColumn(name = "order_entry_id", referencedColumnName = "id")
     @JsonIgnoreProperties("batches")
     private OrderEntry orderEntry;
+
+    @Column(name = "locate")
+    private String locate;
+
 
 }
