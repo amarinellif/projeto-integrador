@@ -23,7 +23,7 @@ import javax.validation.Valid;
  * @version 0.0.1;
  */
 @RestController
-@RequestMapping("/api/v1/fresh-products")
+@RequestMapping("/api/v1")
 public class CartController {
 
     /**
@@ -37,7 +37,7 @@ public class CartController {
      * @param cartDto a valid CartDto instance received by the request body.
      * @return Response Entity of type TotalPriceDto, with the cart total price and the corresponding HttpStatus.
      */
-    @PostMapping("/orders")
+    @PostMapping("/fresh-products/orders")
     public ResponseEntity<TotalPriceDto> createNewPurchaseOrder(@RequestBody @Valid CartDto cartDto) {
         if (cartDto.getOrderStatus().equals(PurchaseOrderStatusEnum.FINISHED)) {
             throw new ForbiddenException("The new cart cannot be created with order status 'FINISHED'");
@@ -51,7 +51,7 @@ public class CartController {
      * @param id a Long received by the URL request to determine the id of the cart wanted
      * @return Response Entity of type  CartOutputDto and the corresponding HttpStatus ;
      */
-    @GetMapping("/orders/{id}")
+    @GetMapping("/fresh-products/orders/{id}")
     public ResponseEntity<CartOutputDto> getCartById(@PathVariable Long id) {
         return ResponseEntity.ok(cartService.getCartById(id));
     }
