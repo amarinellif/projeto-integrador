@@ -59,7 +59,7 @@ public class Product {
     @JsonIgnoreProperties("product")
     private Set<Batch> batches;
 
-    @Column(name = "name")
+    @Column(name = "product_name")
     private String name;
 
     @Column(name = "type")
@@ -67,9 +67,6 @@ public class Product {
 
     @Column(name = "price")
     private double price;
-
-    @Column(name = "locate")
-    private String locate;
 
     @OneToMany(mappedBy = "product")
     @JsonManagedReference
