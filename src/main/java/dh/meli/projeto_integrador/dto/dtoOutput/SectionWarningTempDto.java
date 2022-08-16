@@ -37,12 +37,13 @@ public class SectionWarningTempDto {
     private String sectionType;
     private float currentTemperature;
     private float minimumTemperature;
+    private float maximumTemperature;
 
-    public SectionWarningTempDto(Batch batch) {
-        Section section = batch.getOrderEntry().getSection();
+    public SectionWarningTempDto(Section section) {
         this.sectionId = section.getId();
         this.sectionType = section.getProductType();
         this.currentTemperature = section.getCurrentTemperature();
         this.minimumTemperature = section.getMinimumTemperature();
+        this.maximumTemperature = section.getMaxTemperature();
     }
 }
