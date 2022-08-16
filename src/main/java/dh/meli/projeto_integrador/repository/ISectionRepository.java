@@ -9,11 +9,18 @@ import java.util.List;
 /**
  * Interface ISectionRepository will manage data persistence for Section object instances.
  * Will read, save, update and delete data through the GET, POST, PUT and DELETE requests.
- * @author Diovana Valim
+ * @author Diovana Valim and Amanda Marinelli
  * @version 0.0.1
  */
 public interface ISectionRepository extends CrudRepository<Section, Long> {
 
+
+    /**
+     * Method to find on DB the sections that may have to control the temperature by id Warehouse;
+     *
+     * @param warehouseId of type long. Warehouse identifier;
+     * @return an List of type Section;
+     */
     @Query(value = "SELECT * from section " +
             "WHERE warehouse_id = ?1 " +
             "AND ((section.current_temperature_section > section.maximum_temperature_section) " +

@@ -73,7 +73,12 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
             nativeQuery = true)
     Integer findTotalQuantityByProductId(Long productId);
 
-
+    /**
+     * Method to find warnings about wrong temperature on batches by id Warehouse;
+     *
+     * @param warehouseId of type long. Warehouse identifier;
+     * @return an List of type Batch;
+     */
     @Query(value = "SELECT * from batch " +
             "JOIN order_entry ON order_entry.id = batch.batch_id " +
             "JOIN section ON section.id = order_entry.section_id " +
@@ -81,12 +86,25 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
             "HAVING warehouse_id = ?1", nativeQuery = true)
     List<Batch> getWarningTemperaturesByWarehouseId(Long warehouseId);
 
+    /**
+     * Method to find searches for batch that are close to expiry according to the specified period on days, by Warehouse;
+     *
+     * @param id of type long. Warehouse identifier;
+     * @param daysUntil of type int. Specified period of days until batch expires.
+     * @return an List of type Batch;
+     */
     @Query(value = "SELECT * from batch " +
             "JOIN order_entry ON order_entry.id = batch.batch_id " +
             "JOIN section ON section.id = order_entry.section_id " +
             "WHERE (DATEDIFF(due_date, sysDate()) <= ?1) AND section.warehouse_id= ?2", nativeQuery = true)
     List<Batch> getWarningDueDateByWarehouseId(int daysUntil, Long warehouseId);
 
+    /**
+     * Method to find batches that may have been stored in the wrong section by id Warehouse;
+     *
+     * @param id of type long. Warehouse identifier;
+     * @return an List of type IWrongPlaceBatch;
+     */
     @Query(value = "SELECT batch.batch_id, batch.product_id, product.product_name, section.product_type," +
                         " batch.minimum_temperature, section.minimum_temperature_section, section.maximum_temperature_section " +
             "from batch " +

@@ -30,7 +30,7 @@ import java.time.temporal.ChronoUnit;
 @NoArgsConstructor
 
 /**
- * Class used to create a Data Transfer Object for Warehouseservice.getWarningTemperaturesByWarehouse method
+ * Class used to create a Data Transfer Object for Warehouseservice.getWarningDueDateBatchesByWarehouse method, wrapped by the class WarningDueDateDto
  * @author Amanda Marinelli
  * @version 0.0.1
  * @see java.lang.Object

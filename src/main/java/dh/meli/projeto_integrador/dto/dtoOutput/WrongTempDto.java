@@ -1,6 +1,5 @@
 package dh.meli.projeto_integrador.dto.dtoOutput;
 
-import dh.meli.projeto_integrador.model.Batch;
 import dh.meli.projeto_integrador.model.Section;
 import dh.meli.projeto_integrador.model.Warehouse;
 import lombok.*;
@@ -30,7 +29,7 @@ import java.util.List;
 @NoArgsConstructor
 
 /**
- * Class used to create a Data Transfer Object for Warehouseservice.getWarningTemperaturesByWarehouse method
+ * Class used to create a Data Transfer Object for Warehouseservice.getWrongTempSection method
  * @author Amanda Marinelli
  * @version 0.0.1
  * @see java.lang.Object

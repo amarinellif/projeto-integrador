@@ -21,7 +21,7 @@ import java.util.Optional;
 /**
  * Class responsible for business rules and communication with the Warehouse Repository layer;
  *
- * @author Diovana Valim;
+ * @author Diovana Valim and Amanda Marinelli;
  * @version 0.0.1
  */
 @Service
@@ -57,7 +57,7 @@ public class WarehouseService implements IWarehouseService {
     }
 
     /**
-     * Method to find warnings about high temperatature on batches by id Warehouse;
+     * Method to find warnings about wrong temperature on batches by id Warehouse;
      *
      * @param id of type long. Warehouse identifier;
      * @return an object of type WarningTempDto;
@@ -74,13 +74,14 @@ public class WarehouseService implements IWarehouseService {
     }
 
     /**
-     * Method to find warnings about high temperatature on batches by id Warehouse;
+     * Method to find searches for batch that are close to expiry according to the specified period on days, by Warehouse;
      *
-     * @param id of type long. Warehouse identifier;
-     * @return an object of type WarningTempDto;
+     * @param id        of type long. Warehouse identifier;
+     * @param daysUntil of type int. Specified period of days until batch expires.
+     * @return an object of type WarningDueDateDto;
      */
     @Override
-    public WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id,int daysUntil) {
+    public WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id, int daysUntil) {
         Warehouse warehouse = findWarehouse(id);
         List<Batch> batchList = batchRepository.getWarningDueDateByWarehouseId(daysUntil, id);
 
@@ -90,6 +91,13 @@ public class WarehouseService implements IWarehouseService {
         return new WarningDueDateDto(warehouse, batchList);
     }
 
+
+    /**
+     * Method to find the sections that may have to control the temperature by id Warehouse;
+     *
+     * @param id of type long. Warehouse identifier;
+     * @return an object of type WrongPlaceBatchDto;
+     */
     @Override
     public WrongTempDto getWrongTempSection(Long id) {
         Warehouse warehouse = findWarehouse(id);
@@ -101,6 +109,12 @@ public class WarehouseService implements IWarehouseService {
         return new WrongTempDto(warehouse, sectionList);
     }
 
+    /**
+     * Method to find batches that may have been stored in the wrong section by id Warehouse;
+     *
+     * @param id of type long. Warehouse identifier;
+     * @return an object of type WrongPlaceBatchDto;
+     */
     @Override
     public WrongPlaceBatchDto getWrongPlaceBatches(long id) {
         Warehouse warehouse = findWarehouse(id);

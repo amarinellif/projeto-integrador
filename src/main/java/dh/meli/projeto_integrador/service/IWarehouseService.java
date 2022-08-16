@@ -4,7 +4,6 @@ import dh.meli.projeto_integrador.dto.dtoOutput.WarningDueDateDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningTempDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongPlaceBatchDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongTempDto;
-import dh.meli.projeto_integrador.model.IWrongPlaceBatch;
 import dh.meli.projeto_integrador.model.Warehouse;
 
 /**
@@ -23,33 +22,35 @@ public interface IWarehouseService {
     Warehouse findWarehouse(long id);
 
     /**
-     * Method for to possibles Warnings about incorrects temperatures by Warehouse Id
+     * Method to find warnings about wrong temperature on batches by id Warehouse;
      *
-     * @param id long
-     * @return an object of type WarningTempDto
+     * @param id of type long. Warehouse identifier;
+     * @return an object of type WarningTempDto;
      */
     WarningTempDto getWarningTempBatchesByWarehouse(long id);
 
     /**
-     * Method for to possibles Warnings about incorrects temperatures by Warehouse Id
+     * Method to find searches for batch that are close to expiry according to the specified period on days, by Warehouse;
      *
-     * @param id long
-     * @return an object of type WarningDueDateDto
+     * @param id of type long. Warehouse identifier;
+     * @param daysUntil of type int. Specified period of days until batch expires.
+     * @return an object of type WarningDueDateDto;
      */
-    WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id,int daysUntil);
+    WarningDueDateDto getWarningDueDateBatchesByWarehouse(long id, int daysUntil);
+
     /**
-     * Method for to possibles Warnings about incorrects temperatures by Warehouse Id
+     * Method to find the sections that may have to control the temperature by id Warehouse;
      *
-     * @param warehouseId long
-     * @return an object of type WrongTempDto
+     * @param warehouseId of type long. Warehouse identifier;
+     * @return an object of type WrongPlaceBatchDto;
      */
     WrongTempDto getWrongTempSection(Long warehouseId);
 
     /**
-     * Method for to possibles Warnings about incorrects alocates by Warehouse Id
+     * Method to find batches that may have been stored in the wrong section by id Warehouse;
      *
-     * @param id long
-     * @return an object of type WrongTempDto
+     * @param id of type long. Warehouse identifier;
+     * @return an object of type WrongPlaceBatchDto;
      */
-    WrongPlaceBatchDto getWrongPlaceBatches (long id);
+    WrongPlaceBatchDto getWrongPlaceBatches(long id);
 }
