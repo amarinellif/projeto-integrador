@@ -45,6 +45,7 @@ public class Section {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "section_id")
     private long id;
 
     @OneToMany(mappedBy = "section")
@@ -65,13 +66,13 @@ public class Section {
     @Column(name = "current_product_load")
     private long currentProductLoad;
 
-    @Column(name = "minimum_temperature")
+    @Column(name = "minimum_temperature_section")
     private float minimumTemperature;
 
-    @Column(name = "maximum_temperature")
+    @Column(name = "maximum_temperature_section")
     private float maxTemperature;
 
-    @Column(name = "current_temperature")
+    @Column(name = "current_temperature_section")
     private float currentTemperature;
 
 
