@@ -1,9 +1,7 @@
 package dh.meli.projeto_integrador.repository;
 
-import dh.meli.projeto_integrador.model.Batch;
+import dh.meli.projeto_integrador.model.*;
 import org.springframework.data.jpa.repository.Query;
-import dh.meli.projeto_integrador.model.OrderEntry;
-import dh.meli.projeto_integrador.model.Product;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -50,7 +48,7 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
      * @return a List of objects of type Batch;
      */
     @Query(value = "SELECT * from batch " +
-            "JOIN order_entry ON order_entry.id = batch.id " +
+            "JOIN order_entry ON order_entry.id = batch.batch_id " +
             "JOIN section ON section.id = order_entry.section_id  " +
             "WHERE section.id = ?1", nativeQuery = true)
     List<Batch> findBatchBySectionId(long sectionId);
@@ -69,7 +67,7 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
      * Method to sum current_quantity in all batches querying by associated product Id;
      *
      * @param productId Long;
-     * @return a quantity type Interger;
+     * @return a quantity type Integer;
      */
     @Query(value = "SELECT SUM(current_quantity) FROM batch WHERE product_id=?1",
             nativeQuery = true)
@@ -77,25 +75,25 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
 
 
     @Query(value = "SELECT * from batch " +
-            "JOIN order_entry ON order_entry.id = batch.id " +
+            "JOIN order_entry ON order_entry.id = batch.batch_id " +
             "JOIN section ON section.id = order_entry.section_id " +
             "WHERE batch.minimum_temperature < batch.current_temperature " +
             "HAVING warehouse_id = ?1", nativeQuery = true)
     List<Batch> getWarningTemperaturesByWarehouseId(Long warehouseId);
 
-    @Query(value = "SELECT * from batch \n" +
-            "JOIN order_entry ON order_entry.id = batch.id \n" +
-            "JOIN section ON section.id = order_entry.section_id \n" +
+    @Query(value = "SELECT * from batch " +
+            "JOIN order_entry ON order_entry.id = batch.batch_id " +
+            "JOIN section ON section.id = order_entry.section_id " +
             "WHERE (DATEDIFF(due_date, sysDate()) <= ?1) AND section.warehouse_id= ?2", nativeQuery = true)
     List<Batch> getWarningDueDateByWarehouseId(int daysUntil, Long warehouseId);
 
-    @Query(value = "SELECT * from batch " +
-            "JOIN order_entry ON order_entry.id = batch.id " +
-            "JOIN section ON section.id = order_entry.section_id  " +
-            "WHERE warehouse_id = ?1 " +
-            "HAVING (section.current_temperature > section.maximum_temperature)" +
-            "OR (section.current_temperature < section.minimum_temperature)", nativeQuery = true)
-    List<Batch> getWrongTempSection(Long warehouseId);
-
-
+    @Query(value = "SELECT batch.batch_id, batch.product_id, product.product_name, section.product_type," +
+                        " batch.minimum_temperature, section.minimum_temperature_section, section.maximum_temperature_section " +
+            "from batch " +
+            "JOIN order_entry ON order_entry.id = batch.order_entry_id "+
+            "JOIN section ON section.id = order_entry.section_id " +
+            "JOIN product ON product.id = batch.product_id " +
+            "WHERE  ((batch.minimum_temperature > section.maximum_temperature_section) " +
+            "OR (batch.minimum_temperature < section.minimum_temperature_section)) AND warehouse_id = ?1", nativeQuery = true)
+     List<IWrongPlaceBatch> getWrongPlaceBatches(long id) ;
 }
