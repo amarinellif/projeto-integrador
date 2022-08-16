@@ -1,6 +1,7 @@
 package dh.meli.projeto_integrador.dto.dtoOutput;
 
 import dh.meli.projeto_integrador.model.Batch;
+import dh.meli.projeto_integrador.model.Section;
 import dh.meli.projeto_integrador.model.Warehouse;
 import lombok.*;
 
@@ -40,12 +41,12 @@ public class WrongTempDto {
     private List<SectionWarningTempDto> sectionWarningTempDtoList = new ArrayList<>();
 
 
-    public WrongTempDto(Warehouse warehouse, List<Batch> batchList) {
+    public WrongTempDto(Warehouse warehouse, List<Section> sectionList) {
         this.nameWarehouse = warehouse.getName();
         this.idWarehouse = warehouse.getId();
 
-        for (Batch b : batchList) {
-            this.sectionWarningTempDtoList.add(new SectionWarningTempDto(b));
+        for (Section s : sectionList) {
+            this.sectionWarningTempDtoList.add(new SectionWarningTempDto(s));
         }
     }
 }
