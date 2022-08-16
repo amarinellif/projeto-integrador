@@ -45,7 +45,6 @@ public class Section {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "section_id")
     private long id;
 
     @OneToMany(mappedBy = "section")
@@ -74,7 +73,4 @@ public class Section {
 
     @Column(name = "current_temperature_section")
     private float currentTemperature;
-
-
-
 }
