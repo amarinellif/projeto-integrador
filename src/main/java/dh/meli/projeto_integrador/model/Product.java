@@ -68,6 +68,9 @@ public class Product {
     @Column(name = "price")
     private double price;
 
+    @Column(name = "locate")
+    private String locate;
+
     @OneToMany(mappedBy = "product")
     @JsonManagedReference
     private Set<ProductCart> productCarts;
