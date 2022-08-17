@@ -10,16 +10,104 @@
  Para decidir qual solução implementar, optei por olhar o problema pelo viés do agente. Um dos grandes desafios de manter
 um armazém de produtos fresh é devido ao prazo de validade reduzido e o armazenamento dos produtos, que precisa contar com um controle rigoso de temperatura para que não haja contaminação, nem perda de produtos. 
 
-Dessa forma, busquei trazer informações para fomentar as tomadas de decisão do agente do armazém, sendo 4:
+Dessa forma, busquei trazer informações para fomentar as tomadas de decisão do agente do armazém, sendo elas:
 
 1 - Lista de lotes de produtos que estão com a temperatura acima do mínimo ideal.
 
-2 - Lista de lotes de produtos que estão próximos de um período especIficado de dias para expirar.
+Rota: `api/v1/fresh-products/agent/warning-temp-batches/2`
 
+```json
+{
+    "idWarehouse": 2,
+    "nameWarehouse": "Armazem B",
+    "batchWarningTempDtoList": [
+        {
+            "batchId": 4,
+            "productName": "Iogurte",
+            "orderNumber": 2,
+            "currentTemperature": 1.0,
+            "minimumTemperature": 0.0
+        }
+    ]
+}
+```
+ 
+
+2 - Lista de lotes de produtos que estão próximos de um período especIficado de dias para expirar.
+ 
+ Rota: `api/v1/fresh-products/agent/warning-duedate-batches/1?daysUntil=60`
+ 
+ ```json
+ {
+    "idWarehouse": 1,
+    "nameWarehouse": "Armazem A",
+    "batchWarningDueDateDto": [
+        {
+            "batchId": 1,
+            "productName": "Peito de Frango",
+            "orderNumber": 1,
+            "dueDate": "2022-09-30",
+            "daysToExpire": 44
+        },
+        {
+            "batchId": 2,
+            "productName": "Carne",
+            "orderNumber": 1,
+            "dueDate": "2022-10-12",
+            "daysToExpire": 56
+        }
+    ]
+}
+```
 3 - Lista de seções de produtos que estão com temperetura fora da faixa especificada.
+
+Rota: `api/v1/fresh-products/agent/warning-temp-section/1`
+ 
+  ```json
+{
+    "idWarehouse": 1,
+    "nameWarehouse": "Armazem A",
+    "sectionWarningTempDtoList": [
+        {
+            "sectionId": 1,
+            "sectionType": "Fresco",
+            "currentTemperature": 24.0,
+            "minimumTemperature": 10.0,
+            "maximumTemperature": 18.0
+        },
+        {
+            "sectionId": 3,
+            "sectionType": "Congelado",
+            "currentTemperature": 0.0,
+            "minimumTemperature": -45.0,
+            "maximumTemperature": -25.0
+        }
+    ]
+}
+```
 
 4 - Lista de lotes de produtos que possivelmente estão na seção errada, através da comparação da temperatura ideal com a temperatura da seção.
 
+Rota: `api/v1/fresh-products/agent/wrong-place-batches/2`
+ 
+```json
+{
+    "idWarehouse": 2,
+    "nameWarehouse": "Armazem B",
+    "batchWarningTempDtoList": [
+        {
+            "minimum_temperature_section": 0.0,
+            "maximum_temperature_section": 10.0,
+            "batch_id": 8,
+            "product_id": 8,
+            "product_name": "Presunto",
+            "product_type": "Refrigerado",
+            "minimum_temperature": 15.0
+        }
+    ]
+}
+```
+ 
 </p>
 
 
