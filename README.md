@@ -14,7 +14,7 @@ Dessa forma, busquei trazer informações para fomentar as tomadas de decisão d
 
 1 - Lista de lotes de produtos que estão com a temperatura acima do mínimo ideal.
 
-Rota: `api/v1/fresh-products/agent/warning-temp-batches/2`
+Get: `api/v1/fresh-products/agent/warning-temp-batches/2`
 
 ```json
 {
@@ -35,7 +35,7 @@ Rota: `api/v1/fresh-products/agent/warning-temp-batches/2`
 
 2 - Lista de lotes de produtos que estão próximos de um período especIficado de dias para expirar.
  
- Rota: `api/v1/fresh-products/agent/warning-duedate-batches/1?daysUntil=60`
+ Get: `api/v1/fresh-products/agent/warning-duedate-batches/1?daysUntil=60`
  
  ```json
  {
@@ -61,7 +61,7 @@ Rota: `api/v1/fresh-products/agent/warning-temp-batches/2`
 ```
 3 - Lista de seções de produtos que estão com temperetura fora da faixa especificada.
 
-Rota: `api/v1/fresh-products/agent/warning-temp-section/1`
+Get: `api/v1/fresh-products/agent/warning-temp-section/1`
  
   ```json
 {
@@ -88,7 +88,7 @@ Rota: `api/v1/fresh-products/agent/warning-temp-section/1`
 
 4 - Lista de lotes de produtos que possivelmente estão na seção errada, através da comparação da temperatura ideal com a temperatura da seção.
 
-Rota: `api/v1/fresh-products/agent/wrong-place-batches/2`
+Get: `api/v1/fresh-products/agent/wrong-place-batches/2`
  
 ```json
 {
