@@ -88,7 +88,7 @@ public class WarehouseServiceTest {
         WarningTempDto warningTempDto = warehouseService.getWarningTempBatchesByWarehouse(1L);
 
         assertThat(warningTempDto.getIdWarehouse()).isEqualTo(1L);
-
+        assertThat(warningTempDto.getBatchWarningTempDtoList().size()).isEqualTo(3); // Porque os 3 batches do generators tem o mesmo valor de temp
         verify(batchRepository, atLeastOnce()).getWarningTemperaturesByWarehouseId(anyLong());
     }
 
@@ -109,6 +109,18 @@ public class WarehouseServiceTest {
     }
 
     @Test
+    void getWarningDueDateBatchesByWarehouse_WhenBatchListNotEmpty() {
+        BDDMockito.when(batchRepository.getWarningDueDateByWarehouseId(ArgumentMatchers.anyInt(), ArgumentMatchers.anyLong()))
+                .thenReturn(Generators.validBatchList());
+
+        WarningDueDateDto warningDueDateDto = warehouseService.getWarningDueDateBatchesByWarehouse(1L,22);
+
+        assertThat(warningDueDateDto.getIdWarehouse()).isEqualTo(1L);
+        assertThat(warningDueDateDto.getBatchWarningDueDateDto().get(0).getBatchId()).isEqualTo(1);
+        verify(batchRepository, atLeastOnce()).getWarningDueDateByWarehouseId(ArgumentMatchers.anyInt(), ArgumentMatchers.anyLong());
+    }
+
+    @Test
     void getWarningDueDateBatchesByWarehouse_WhenBatchListIsEmpty() {
         List<Batch> batchList = new ArrayList<>();
         BDDMockito.when(batchRepository.getWarningDueDateByWarehouseId(ArgumentMatchers.anyInt(), ArgumentMatchers.anyLong()))
@@ -122,6 +134,19 @@ public class WarehouseServiceTest {
 
         assertThat(exception.getMessage()).isEqualTo(String.format("Everything is okay with this Warehouse. No batch warnings found.",
                 Generators.getProduct().getId()));
+    }
+
+    @Test
+    void getWrongTempSection_WhenSectionListNotEmpty() {
+        List<Section> sections = new ArrayList<>();
+        sections.add(Generators.getSection());
+        BDDMockito.when(sectionRepository.getWrongTempSection(ArgumentMatchers.anyLong()))
+                .thenReturn(sections);
+
+        WrongTempDto wrongTempDto = warehouseService.getWrongTempSection(1L);
+
+        assertThat(wrongTempDto.getIdWarehouse()).isEqualTo(1L);
+        verify(sectionRepository, atLeastOnce()).getWrongTempSection(ArgumentMatchers.anyLong());
     }
 
     @Test

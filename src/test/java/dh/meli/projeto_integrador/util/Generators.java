@@ -892,10 +892,4 @@ public class Generators {
         return batchStockDtoList;
     }
 
-  /*  public static List<IWrongPlaceBatch> getlistIWrongPlaceBatch(){
-
-        List<IWrongPlaceBatch> iWrongPlaceBatchList = new ArrayList<>();
-        iWrongPlaceBatchList.add();
-        return iWrongPlaceBatchList;
-    }*/
 }
