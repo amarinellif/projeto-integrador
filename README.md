@@ -1,5 +1,5 @@
 <h1 align="center"> 🍃 MeLi Frescos - Requisito 6 🍃 </h1>
-<p align="center"> Repositório criado para hospedar o código do Requisito Final do último Touchpoint do Bootcamp IT Java.</p>
+<p align="center"> Requisito Final do último Touchpoint do Bootcamp IT Java.</p>
 
 
 
@@ -11,6 +11,14 @@
 um armazém de produtos fresh é devido ao prazo de validade reduzido e o armazenamento dos produtos, que precisa contar com um controle rigoso de temperatura para que não haja contaminação, nem perda de produtos. 
 
 Dessa forma, busquei trazer informações para fomentar as tomadas de decisão do agente do armazém, sendo elas:
+
+1 - Lista de lotes de produtos que estão com a temperatura acima do mínimo ideal.
+
+2 - Lista de lotes de produtos que estão próximos de um período específicado de dias para expirar.
+
+3 - Lista de seções de produtos que estão com tempetura fora da faixa especificada.
+
+4 - Lista de lotes de produtos que possivelmente estão na seção errada.
 
 </p>
 
