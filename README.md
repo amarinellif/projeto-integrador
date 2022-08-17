@@ -10,13 +10,13 @@
  Para decidir qual solução implementar, optei por olhar o problema pelo viés do agente. Um dos grandes desafios de manter
 um armazém de produtos fresh é devido ao prazo de validade reduzido e o armazenamento dos produtos, que precisa contar com um controle rigoso de temperatura para que não haja contaminação, nem perda de produtos. 
 
-Dessa forma, busquei trazer informações para fomentar as tomadas de decisão do agente do armazém, sendo elas:
+Dessa forma, busquei trazer informações para fomentar as tomadas de decisão do agente do armazém, sendo 4:
 
 1 - Lista de lotes de produtos que estão com a temperatura acima do mínimo ideal.
 
 2 - Lista de lotes de produtos que estão próximos de um período especIficado de dias para expirar.
 
-3 - Lista de seções de produtos que estão com tempeRAtura fora da faixa especificada.
+3 - Lista de seções de produtos que estão com temperetura fora da faixa especificada.
 
 4 - Lista de lotes de produtos que possivelmente estão na seção errada, através da comparação da temperatura ideal com a temperatura da seção.
 
