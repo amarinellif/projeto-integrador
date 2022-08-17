@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "0e95fb3e-528b-46b2-be4c-9b2db2a22786",
+		"name": "PROJETO INTEGRADOR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CENÁRIO 1 - Lista os lotes da warehouse 2 que chegaram com a temperatura acima do mínimo ideal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-temp-batches/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-temp-batches",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 1 - Avisa não haja produtos com a temperatura acima do necessário na Warehouse especificada",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-temp-batches/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-temp-batches",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 2 - Recebe lista de produtos do armazém 1 que estão a até 60 dias do prazo de validade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-duedate-batches/1?daysUntil=60",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-duedate-batches",
+						"1"
+					],
+					"query": [
+						{
+							"key": "daysUntil",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 2 - Lista os produtos do armazém 1 que estão a até 60 dias do prazo de validade",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-duedate-batches/2?daysUntil=30",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-duedate-batches",
+						"2"
+					],
+					"query": [
+						{
+							"key": "daysUntil",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 2 - Avisa caso não exista a Warehouse",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-duedate-batches/4?daysUntil=60",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-duedate-batches",
+						"4"
+					],
+					"query": [
+						{
+							"key": "daysUntil",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 2  - Caso não haja produtos prestes à vencer na Warehouse especificada",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-duedate-batches/3?daysUntil=60",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-duedate-batches",
+						"3"
+					],
+					"query": [
+						{
+							"key": "daysUntil",
+							"value": "60"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 3 - Lista possíveis problemas de controle de temperatura nas seções",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/warning-temp-section/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"warning-temp-section",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CENÁRIO 4 - Lista de possíveis problemas que possam estar acontecendo em relação ao armazenamento inadequado dos alimentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fresh-products/agent/wrong-place-batches/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"agent",
+						"wrong-place-batches",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
