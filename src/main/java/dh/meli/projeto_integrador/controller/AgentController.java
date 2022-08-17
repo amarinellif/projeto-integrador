@@ -4,7 +4,6 @@ import dh.meli.projeto_integrador.dto.dtoOutput.WarningDueDateDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WarningTempDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongPlaceBatchDto;
 import dh.meli.projeto_integrador.dto.dtoOutput.WrongTempDto;
-import dh.meli.projeto_integrador.model.IWrongPlaceBatch;
 import dh.meli.projeto_integrador.repository.IBatchRepository;
 import dh.meli.projeto_integrador.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
