@@ -14,9 +14,9 @@ Dessa forma, busquei trazer informações para fomentar as tomadas de decisão d
 
 1 - Lista de lotes de produtos que estão com a temperatura acima do mínimo ideal.
 
-2 - Lista de lotes de produtos que estão próximos de um período específicado de dias para expirar.
+2 - Lista de lotes de produtos que estão próximos de um período especIficado de dias para expirar.
 
-3 - Lista de seções de produtos que estão com tempetura fora da faixa especificada.
+3 - Lista de seções de produtos que estão com tempeRAtura fora da faixa especificada.
 
 4 - Lista de lotes de produtos que possivelmente estão na seção errada, através da comparação da temperatura ideal com a temperatura da seção.
 
