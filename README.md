@@ -101,7 +101,7 @@ Get: `api/v1/fresh-products/agent/wrong-place-batches/2`
             "batch_id": 8,
             "product_id": 4,
             "product_name": "Uva",
-            "product_type": "Refrigerado",
+            "product_type": "Fresh",
             "minimum_temperature": 15.0
         }
     ]
