@@ -40,5 +40,5 @@ ___
 
 ## 📝 Autora ##
 
-Desenvolvido com 💛 por Amanda Marinelli Ferreira
+Desenvolvido por Amanda Marinelli Ferreira 💛
 
