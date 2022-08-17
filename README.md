@@ -99,8 +99,8 @@ Get: `api/v1/fresh-products/agent/wrong-place-batches/2`
             "minimum_temperature_section": 0.0,
             "maximum_temperature_section": 10.0,
             "batch_id": 8,
-            "product_id": 8,
-            "product_name": "Presunto",
+            "product_id": 4,
+            "product_name": "Uva",
             "product_type": "Refrigerado",
             "minimum_temperature": 15.0
         }
