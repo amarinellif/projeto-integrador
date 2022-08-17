@@ -18,7 +18,7 @@ Dessa forma, busquei trazer informações para fomentar as tomadas de decisão d
 
 3 - Lista de seções de produtos que estão com tempetura fora da faixa especificada.
 
-4 - Lista de lotes de produtos que possivelmente estão na seção errada.
+4 - Lista de lotes de produtos que possivelmente estão na seção errada, através da comparação da temperatura ideal com a temperatura da seção.
 
 </p>
 
