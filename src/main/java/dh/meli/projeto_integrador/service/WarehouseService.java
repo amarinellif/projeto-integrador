@@ -21,7 +21,7 @@ import java.util.Optional;
 /**
  * Class responsible for business rules and communication with the Warehouse Repository layer;
  *
- * @author Diovana Valim and Amanda Marinelli;
+ * @author Diovana Valim e Amanda mA;
  * @version 0.0.1
  */
 @Service
@@ -108,6 +108,7 @@ public class WarehouseService implements IWarehouseService {
         }
         return new WrongTempDto(warehouse, sectionList);
     }
+
 
     /**
      * Method to find batches that may have been stored in the wrong section by id Warehouse;

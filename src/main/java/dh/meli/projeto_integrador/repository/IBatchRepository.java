@@ -89,7 +89,7 @@ public interface IBatchRepository extends CrudRepository<Batch, Long> {
     /**
      * Method to find searches for batch that are close to expiry according to the specified period on days, by Warehouse;
      *
-     * @param id of type long. Warehouse identifier;
+     * @param warehouseId of type long. Warehouse identifier;
      * @param daysUntil of type int. Specified period of days until batch expires.
      * @return an List of type Batch;
      */

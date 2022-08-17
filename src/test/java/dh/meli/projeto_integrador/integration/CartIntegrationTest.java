@@ -138,22 +138,6 @@ public class CartIntegrationTest {
                 .andExpect(jsonPath("$.totalPrice", CoreMatchers.is(totalPriceDto.getTotalPrice())));
     }
 
-    @Test
-    public void update_returnCartStatus_whenCartAlreadyExists() throws Exception{
-        Customer customer = GenerateCustomer.newCustomer1();
-        customerRepository.save(customer);
-        Cart cart = GenerateCart.newCartWithId1();
-        cartRepository.save(cart);
-        UpdateStatusDto updateStatusDto = GenerateUpdateStatusDto.newUpdateStatusDto();
-
-        ResultActions response = mockMvc.perform(put("/api/v1/fresh-products/{id}", GenerateCart.newCartWithId1().getId())
-                .contentType(MediaType.APPLICATION_JSON));
-
-        response.andExpect(status().isOk())
-                .andExpect(jsonPath("$.message",
-                        CoreMatchers.is(updateStatusDto.getMessage())));
-    }
-
 }
 
 
